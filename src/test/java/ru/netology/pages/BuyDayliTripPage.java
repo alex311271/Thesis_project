@@ -28,9 +28,9 @@ public class BuyDayliTripPage {
     private final SelenideElement yearError = $x("//*[text()='Год']/..//*[@class='input__sub']");
     private final SelenideElement ownerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
     private final SelenideElement cvcError = $x("//*[text()='CVC/CVV']/..//*[@class='input__sub']");
-    private final SelenideElement notificationError = $x("//*[@id=\"root\"]/div/div[3]/div[1]/span");
+    private final SelenideElement notificationError = $x("//div[contains(@class, 'notification_status_error')]");
 
-    private final SelenideElement notificationSuccessfully = $(".notification_status_ok");
+    private final SelenideElement notificationSuccessfully = $x("//div[contains(@class, 'notification_status_ok')]");
 
     public void choicePaymentCard() {
         buyButton.click();

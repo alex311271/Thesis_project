@@ -3,6 +3,7 @@ package ru.netology.tests;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.SneakyThrows;
+//import lombok.var;
 import org.junit.jupiter.api.*;
 import ru.netology.data.DataGenerator;
 import ru.netology.pages.BuyDayliTripPage;
@@ -38,7 +39,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Purchase with a valid card")
+        @DisplayName("#1 Purchase with a valid card")
         public void shouldPaymentValidCard() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -49,14 +50,14 @@ public class BuyDayliTripTest {
             var expected = "APPROVED";
             var paymentInfo = getPaymentInfo();
             var orderInfo = getOrderInfo();
-            buyDayliTripPage.approved();
             assertEquals(expected, paymentInfo.getStatus());
             assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
+            buyDayliTripPage.approved();
         }
 
         @Test
         @SneakyThrows
-        @DisplayName("Purchase on credit with a valid card")
+        @DisplayName("#2 Purchase on credit with a valid card")
         public void shouldCreditValidCard() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -79,7 +80,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Payment with a declined card")
+        @DisplayName("#3 Payment with a declined card")
         public void shouldPaymentDeclinedCard() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -97,7 +98,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Purchase on credit with a declined card")
+        @DisplayName("#4 Purchase on credit with a declined card")
         public void shouldCreditDeclinedCard() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -120,7 +121,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The card number field is empty")
+        @DisplayName("#5 The card number field is empty")
         public void shouldCardNumberError() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -132,7 +133,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The month field is empty")
+        @DisplayName("#6 The month field is empty")
         public void shouldMonthError() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -144,7 +145,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The year field is empty")
+        @DisplayName("#7 The year field is empty")
         public void shouldYearError() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -156,7 +157,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The owner field is empty")
+        @DisplayName("#8 The owner field is empty")
         public void shouldOwnerError() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -168,7 +169,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The cvc field is empty")
+        @DisplayName("#9 The cvc field is empty")
         public void shouldCVCError() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -184,7 +185,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Switching to card payment")
+        @DisplayName("#10 Switching to card payment")
         public void shouldSwitchingOnCardPayment() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -197,7 +198,7 @@ public class BuyDayliTripTest {
         }
         @Test
         @SneakyThrows
-        @DisplayName("Switching to buying on credit")
+        @DisplayName("#11 Switching to buying on credit")
         public void shouldSwitchingOnCredit() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -211,7 +212,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("11 digits in the card number field")
+        @DisplayName("#12 11 digits in the card number field")
         public void elevenDigitsCardNumber() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -223,7 +224,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Random 12 digits in the card number field")
+        @DisplayName("#13 Random 12 digits in the card number field")
         public void random12CardNumber() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -236,41 +237,41 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Random 19 digits in the card number field")
+        @DisplayName("#14 Random 19 digits in the card number field")
         public void random19CardNumber() {
             var cardData = getValidDeclinedCard();
             var number = DataGenerator.getCardNumberWith19Digits();
-            var comparisonNumber = number;
+            var sendNumber = number;
             var buyDayliTripPage = new BuyDayliTripPage();
             buyDayliTripPage.choicePaymentCard();
             buyDayliTripPage.sendDataInFoarm(number, cardData.getMonth(), cardData.getYear(),
                     cardData.getOwner(), cardData.getCvc());
             TimeUnit.SECONDS.sleep(15);
-            buyDayliTripPage.comparisonSendAndCurrentData(comparisonNumber, cardData.getMonth(), cardData.getYear(),
+            buyDayliTripPage.comparisonSendAndCurrentData(sendNumber, cardData.getMonth(), cardData.getYear(),
                     cardData.getOwner(), cardData.getCvc());
             buyDayliTripPage.declined();
         }
 
         @Test
         @SneakyThrows
-        @DisplayName("Random 20 digits in the card number field")
+        @DisplayName("#15 Random 20 digits in the card number field")
         public void random20CardNumber() {
             var cardData = getValidDeclinedCard();
             var number = DataGenerator.getCardNumberWith20Digits();
-            var comparisonNumber = number;
+            var sendNumber = number;
             var buyDayliTripPage = new BuyDayliTripPage();
             buyDayliTripPage.choicePaymentCard();
             buyDayliTripPage.sendDataInFoarm(number, cardData.getMonth(), cardData.getYear(),
                     cardData.getOwner(), cardData.getCvc());
             TimeUnit.SECONDS.sleep(15);
-            buyDayliTripPage.comparisonSendAndCurrentData(comparisonNumber, cardData.getMonth(), cardData.getYear(),
+            buyDayliTripPage.comparisonSendAndCurrentData(sendNumber, cardData.getMonth(), cardData.getYear(),
                     cardData.getOwner(), cardData.getCvc());
             buyDayliTripPage.declined();
         }
 
         @Test
         @SneakyThrows
-        @DisplayName("Random symbols in the card number field")
+        @DisplayName("#16 Random symbols in the card number field")
         public void randomSymbolsCardNumber() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -282,7 +283,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("1 digits in the month field")
+        @DisplayName("#17 1 digits in the month field")
         public void oneDigitsInMonth() {
             var cardData = getValidDeclinedCard();
             var month = DataGenerator.getOneDigit();
@@ -297,7 +298,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("3 digits in the month field")
+        @DisplayName("#18 3 digits in the month field")
         public void threeDigitsInMonth() {
             var cardData = getValidDeclinedCard();
             var month = cardData.getMonth() + DataGenerator.getOneDigit();
@@ -312,7 +313,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Two 0 in the month field")
+        @DisplayName("#19 Two 0 in the month field")
         public void two0InMonth() {
             var cardData = getValidDeclinedCard();
             var month = "00";
@@ -325,7 +326,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("01 in the month field")
+        @DisplayName("#20 01 in the month field")
         public void theMonth01() {
             var cardData = getValidApprovedCard();
             var month = "01";
@@ -344,7 +345,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("12 in the month field")
+        @DisplayName("#21 12 in the month field")
         public void twelveInMonth() {
             var cardData = getValidApprovedCard();
             var month = "12";
@@ -363,7 +364,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("13 in the month field")
+        @DisplayName("#22 13 in the month field")
         public void thirteenInMonth() {
             var cardData = getValidApprovedCard();
             var month = "13";
@@ -375,7 +376,7 @@ public class BuyDayliTripTest {
         }
         @Test
         @SneakyThrows
-        @DisplayName("Random symbols in month field")
+        @DisplayName("#23 Random symbols in month field")
         public void randomSymbolsInMonth() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -387,7 +388,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("The year field contains the date in the past")
+        @DisplayName("#24 The year field contains the date in the past")
         public void oldYear() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -397,22 +398,23 @@ public class BuyDayliTripTest {
             buyDayliTripPage.yearError();
         }
 
-        // Данная проверка возможна начиная со второг месяц текущего года
+        // Данная проверка возможна начиная со второго месяц текущего года
 //        @Test
 //        @SneakyThrows
-//        @DisplayName("The month field contains the last year of the current year.")
+//        @DisplayName("#25 The month field contains the last year of the current year.")
 //        public void oldMonth() {
 //            var cardData = getValidApprovedCard();
+//            var shift = shiftData();
 //            var buyDayliTripPage = new BuyDayliTripPage();
 //            buyDayliTripPage.choicePaymentCard();
-//            buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), getMonth(-1), getYear(0),
+//            buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), getMonth(-1), getYear(shift),
 //                    cardData.getOwner(), cardData.getCvc());
 //            buyDayliTripPage.monthError();
 //
 //        }
         @Test
         @SneakyThrows
-        @DisplayName("Current month and year")
+        @DisplayName("#26 Current month and year")
         public void currentMonthAndYear() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -430,7 +432,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Writing a name with a hyphen")
+        @DisplayName("#27 Writing a name with a hyphen")
         public void hyphenInName() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -448,7 +450,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Owner in lower case")
+        @DisplayName("#28 Owner in lower case")
         public void ownerLowerCase() {
             var cardData = getValidDeclinedCard();
             var owner = cardData.getOwner().toLowerCase();
@@ -463,7 +465,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Spaces at the beginning and end owner")
+        @DisplayName("#29 Spaces at the beginning and end owner")
         public void spacesInFiledOwner() {
             var cardData = getValidDeclinedCard();
             var owner = " " + cardData.getOwner() + " ";
@@ -478,7 +480,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Hyphen at the beginning and end owner")
+        @DisplayName("#30 Hyphen at the beginning and end owner")
         public void hyphenInFiledOwner() {
             var cardData = getValidDeclinedCard();
             var owner = "-" + cardData.getOwner() + "-";
@@ -493,7 +495,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Cardholder's name in Cyrillic")
+        @DisplayName("#31 Cardholder's name in Cyrillic")
         public void nameInCyrillic() {
             var cardData = getValidDeclinedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -505,9 +507,9 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Random characters in cardholder name")
+        @DisplayName("#32 Random characters in cardholder name")
         public void nameInRandomSymbols() {
-            var cardData = getValidDeclinedCard();
+            var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
             buyDayliTripPage.choicePaymentCard();
             buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), cardData.getMonth(), cardData.getYear(),
@@ -517,7 +519,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("There are two numbers in the CVC field")
+        @DisplayName("#33 There are two numbers in the CVC field")
         public void cvcTwoDigits() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -529,7 +531,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Trimming extra characters in a field CVC")
+        @DisplayName("#34 Trimming extra characters in a field CVC")
         public void shouldTrimmingLongCVC() {
             var cardData = getValidDeclinedCard();
             var cvc = cardData.getCvc() + DataGenerator.getOneDigit();
@@ -544,7 +546,7 @@ public class BuyDayliTripTest {
 
         @Test
         @SneakyThrows
-        @DisplayName("Random symbols in the CVC field")
+        @DisplayName("#35 Random symbols in the CVC field")
         public void cvcRandomSymbols() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();
@@ -555,7 +557,7 @@ public class BuyDayliTripTest {
         }
         @Test
         @SneakyThrows
-        @DisplayName("Random litters in the CVC field")
+        @DisplayName("#36 Random litters in the CVC field")
         public void cvcRandomLitters() {
             var cardData = getValidApprovedCard();
             var buyDayliTripPage = new BuyDayliTripPage();

@@ -16,7 +16,9 @@ public class DataGenerator {
     private static final String approvedCard = "4444 4444 4444 4441";
     private static final String declinedCard = "4444 4444 4444 4442";
 
+
     private DataGenerator() {}
+
 
     @Value
     public static class CardData {
@@ -28,24 +30,24 @@ public class DataGenerator {
     }
 
     public static CardData getValidApprovedCard() {
-        return new CardData(approvedCard, getMonth(3), getYear(1), getOwner(), getCVC());
+        return new CardData(approvedCard, getMonth(3), getYear(2), getOwner(), getCVC());
     }
 
     public static CardData getValidDeclinedCard() {
-        return new CardData(declinedCard, getMonth(4), getYear(2), getOwner(), getCVC());
+        return new CardData(declinedCard, getMonth(2), getYear(1), getOwner(), getCVC());
     }
+
+//    public static int shiftData() {
+//        if (getMonth(- 1) == "12") {
+//            return (- 1);
+//        } return (0);
+//    }
 
     public static String getCardNumberWith11Digits() {
         return faker.numerify("4444 44## ###");
     }
     public static String getCardNumberWith12Digits() {
         return faker.numerify("4444 444# #### ####");
-    }
-    public static String getCardNumberWith13Digits() {
-        return faker.numerify("4444 444# #### #### #");
-    }
-    public static String getCardNumberWith18Digits() {
-        return faker.numerify("4444 444# #### #### #### ##");
     }
     public static String getCardNumberWith19Digits() {
         return faker.numerify("4444 444# #### #### ###");
@@ -81,7 +83,7 @@ public class DataGenerator {
                 + faker.name().lastName().toUpperCase();
     }
     public static String getOwnerWithCyrillic() {
-        return fakerWithCyrillic.name().firstName().toUpperCase() + fakerWithCyrillic.name().lastName().toUpperCase();
+        return fakerWithCyrillic.name().firstName().toUpperCase() + " " + fakerWithCyrillic.name().lastName().toUpperCase();
     }
     public static String getOwnerWithRandomSymbols() {
         return faker.regexify("[!@#$%^&*()_+-={}|?><]{6} [!@#$%^&*()_+-={}|?><]{5}");
@@ -93,9 +95,7 @@ public class DataGenerator {
     public static String getCVC2Digits() {
         return faker.numerify("##");
     }
-    public static String getCVC1Digits() {
-        return faker.numerify("#");
-    }
+
     public static String getInvalidCVC() {
         return faker.regexify("[!@#$%^&*()_+-={}|?><]{3}");
     }
