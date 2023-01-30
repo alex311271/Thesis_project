@@ -24,7 +24,7 @@ public class BuyDayliTripPage {
     private final SelenideElement cvcInput = $("input[placeholder='999'");
 
     private final SelenideElement cardNumberError = $x(".//*[@id='root']/div/form/fieldset/div[1]/span/span/span[3]");
-    private final SelenideElement monthError = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[1]/span/span/span[3]");
+    private final SelenideElement monthError = $x("//*[text()='Месяц']/..//*[@class='input__sub']");
     private final SelenideElement yearError = $x("//*[text()='Год']/..//*[@class='input__sub']");
     private final SelenideElement ownerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
     private final SelenideElement cvcError = $x("//*[text()='CVC/CVV']/..//*[@class='input__sub']");

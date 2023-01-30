@@ -44,11 +44,11 @@ public class DataGenerator {
     }
 
     public static String getCardNumberWith12Digits() {
-        return faker.numerify("4444 444# #### ####");
+        return faker.numerify("4444 444# ####");
     }
 
-    public static String getCardNumberWith19Digits() {
-        return faker.numerify("4444 444# #### #### ###");
+    public static String getCardNumberWith16Digits() {
+        return faker.numerify("4444 444# #### ####");
     }
 
     public static String getCardNumberWith20Digits() {
@@ -90,7 +90,7 @@ public class DataGenerator {
     }
 
     public static String getOwnerWithRandomSymbols() {
-        return faker.regexify("[!@#$%^&*()_+-={}|?><]{6} [!@#$%^&*()_+-={}|?><]{5}");
+        return faker.regexify("[!@#$%^&*()_+-={}|?><][1-9]{6} [!@#$%^&*()_+-={}|?><][1-9]{5}");
     }
 
     public static String getCVC() {
