@@ -17,7 +17,8 @@ public class DataGenerator {
     private static final String declinedCard = "4444 4444 4444 4442";
 
 
-    private DataGenerator() {}
+    private DataGenerator() {
+    }
 
 
     @Value
@@ -37,24 +38,23 @@ public class DataGenerator {
         return new CardData(declinedCard, getMonth(2), getYear(1), getOwner(), getCVC());
     }
 
-//    public static int shiftData() {
-//        if (getMonth(- 1) == "12") {
-//            return (- 1);
-//        } return (0);
-//    }
 
     public static String getCardNumberWith11Digits() {
         return faker.numerify("4444 44## ###");
     }
+
     public static String getCardNumberWith12Digits() {
         return faker.numerify("4444 444# #### ####");
     }
+
     public static String getCardNumberWith19Digits() {
         return faker.numerify("4444 444# #### #### ###");
     }
+
     public static String getCardNumberWith20Digits() {
         return faker.numerify("4444 444# #### #### ####");
     }
+
     public static String getInvalidCardNumber() {
         return faker.numerify("???? ???? ???? ????");
     }
@@ -66,25 +66,29 @@ public class DataGenerator {
     public static String getOneDigit() {
         return faker.numerify("#");
     }
+
     public static String getInvalidMonth() {
         return faker.regexify("[a-z!@#$%^&*()_+-=}{|?><]{2}");
     }
 
 
     public static String getYear(int shiftYear) {
-        return  LocalDate.now().plusYears(shiftYear).format(DateTimeFormatter.ofPattern("yy"));
+        return LocalDate.now().plusYears(shiftYear).format(DateTimeFormatter.ofPattern("yy"));
     }
 
     public static String getOwner() {
         return faker.name().fullName().toUpperCase();
     }
+
     public static String getOwnerDoubleName() {
         return faker.name().firstName().toUpperCase() + " " + faker.name().lastName().toUpperCase() + "-"
                 + faker.name().lastName().toUpperCase();
     }
+
     public static String getOwnerWithCyrillic() {
         return fakerWithCyrillic.name().firstName().toUpperCase() + " " + fakerWithCyrillic.name().lastName().toUpperCase();
     }
+
     public static String getOwnerWithRandomSymbols() {
         return faker.regexify("[!@#$%^&*()_+-={}|?><]{6} [!@#$%^&*()_+-={}|?><]{5}");
     }
@@ -92,6 +96,7 @@ public class DataGenerator {
     public static String getCVC() {
         return faker.numerify("###");
     }
+
     public static String getCVC2Digits() {
         return faker.numerify("##");
     }
@@ -99,6 +104,7 @@ public class DataGenerator {
     public static String getInvalidCVC() {
         return faker.regexify("[!@#$%^&*()_+-={}|?><]{3}");
     }
+
     public static String getLiteralCVC() {
         return faker.bothify("???");
     }

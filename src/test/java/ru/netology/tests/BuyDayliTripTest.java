@@ -404,13 +404,11 @@ public class BuyDayliTripTest {
 //        @DisplayName("#25 The month field contains the last year of the current year.")
 //        public void oldMonth() {
 //            var cardData = getValidApprovedCard();
-//            var shift = shiftData();
 //            var buyDayliTripPage = new BuyDayliTripPage();
 //            buyDayliTripPage.choicePaymentCard();
-//            buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), getMonth(-1), getYear(shift),
+//            buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), getMonth(-1), getYear(0),
 //                    cardData.getOwner(), cardData.getCvc());
 //            buyDayliTripPage.monthError();
-//
 //        }
         @Test
         @SneakyThrows
