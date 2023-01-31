@@ -13,17 +13,17 @@ public class BuyDayliTripPage {
     private final SelenideElement buyHeader = $(byText("Оплата по карте"));
     private final SelenideElement creditHeader = $(byText("Кредит по данным карты"));
 
-    private final SelenideElement buyButton = $(byText("Купить"));
-    private final SelenideElement creditButton = $(byText("Купить в кредит"));
-    private final SelenideElement continueButton = $("#root > div > form > fieldset > div:nth-child(4) > button > span");
+    private final SelenideElement buyButton = $x("//button[@role='button'][1]");
+    private final SelenideElement creditButton = $x("//button[@role='button'][2]");
+    private final SelenideElement continueButton = $x("//span[text()='Продолжить']");
 
     private final SelenideElement cardNumberInput = $("input[placeholder='0000 0000 0000 0000']");
     private final SelenideElement monthInput = $("input[placeholder='08'");
     private final SelenideElement yearInput = $("input[placeholder='22'");
-    private final SelenideElement ownerInput = $("#root > div > form > fieldset > div:nth-child(3) > span > span:nth-child(1) > span > span > span.input__box > input");
+    private final SelenideElement ownerInput = $x("//span[text()='Владелец']/../../..//input");
     private final SelenideElement cvcInput = $("input[placeholder='999'");
 
-    private final SelenideElement cardNumberError = $x(".//*[@id='root']/div/form/fieldset/div[1]/span/span/span[3]");
+    private final SelenideElement cardNumberError =  $x("//*[text()='Номер карты']/..//*[@class='input__sub']");
     private final SelenideElement monthError = $x("//*[text()='Месяц']/..//*[@class='input__sub']");
     private final SelenideElement yearError = $x("//*[text()='Год']/..//*[@class='input__sub']");
     private final SelenideElement ownerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
