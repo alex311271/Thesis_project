@@ -335,11 +335,6 @@ public class BuyDayliTripTest {
             buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), month, cardData.getYear(),
                     cardData.getOwner(), cardData.getCvc());
             TimeUnit.SECONDS.sleep(15);
-//            var expected = "APPROVED";
-//            var paymentInfo = getPaymentInfo();
-//            var orderInfo = getOrderInfo();
-//            assertEquals(expected, paymentInfo.getStatus());
-//            assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
             buyDayliTripPage.approved();
         }
 
@@ -420,11 +415,6 @@ public class BuyDayliTripTest {
             buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), getMonth(0), getYear(0),
                     cardData.getOwner(), cardData.getCvc());
             TimeUnit.SECONDS.sleep(15);
-//            var expected = "APPROVED";
-//            var paymentInfo = getPaymentInfo();
-//            var orderInfo = getOrderInfo();
-//            assertEquals(expected, paymentInfo.getStatus());
-//            assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
             buyDayliTripPage.approved();
         }
 
@@ -438,11 +428,6 @@ public class BuyDayliTripTest {
             buyDayliTripPage.sendDataInFoarm(cardData.getNumber(), cardData.getMonth(), cardData.getYear(),
                     getOwnerDoubleName(), cardData.getCvc());
             TimeUnit.SECONDS.sleep(15);
-//            var expected = "APPROVED";
-//            var paymentInfo = getPaymentInfo();
-//            var orderInfo = getOrderInfo();
-//            assertEquals(expected, paymentInfo.getStatus());
-//            assertEquals(paymentInfo.getTransaction_id(), orderInfo.getPayment_id());
             buyDayliTripPage.approved();
         }
 
