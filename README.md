@@ -34,7 +34,7 @@
 1. Запустить проект в Intellij IDEA
 2. В терминале из корня проекта запустить контейнеры командой `docker-compose up -d --force-recreate`
 3. Запустить приложение командой ` java -jar artifacts/aqa-shop.jar --spring.datasource.url=jdbc:mysql://localhost:3306/base_mysql`
-4. Открыть второй терминал и в нем запустить тесты командой ` ./gradlew clean test allureReport -D dbUrl=jdbc:mysql://localhost:5432/base_mysql`
+4. Открыть второй терминал и в нем запустить тесты командой ` ./gradlew clean test allureReport -D dbUrl=jdbc:mysql://localhost:3306/base_mysql`
 5. По окончании выполнения тестов открыть отчет командой `./gradlew allureServe`
 6. Закрыть отчет **CTRL + C => y => ENTER**
 7. Остановить Приложение **CTRL + C**
